@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@keyframes carRun {
+  0% {
+    right: -100px;
+    opacity: 2;
+  }
+
+  100% {
+    right: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-carRun {
+  animation: carRun 4s linear forwards;
+}
+
+@keyframes exhaustSmoke {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-20px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+.smoke-bubble {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 9999px;
+  filter: blur(2px);
+  animation: exhaustSmoke 1.3s ease-out infinite;
+}
+
