@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FuelStats from "./Components/FuelStats";
 import Preloader from "./Components/Preloader";
 
-/* ─── FuelGaze Logo ─────────────────────────────────────────── */
+
 const FuelGazeLogo = () => (
   <div style={{
     display: "flex",
@@ -11,15 +11,15 @@ const FuelGazeLogo = () => (
     gap: 9,
     userSelect: "none",
   }}>
-    {/* Icon — fuel drop with gaze/eye detail */}
+   
     <svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M14 0 C14 0 1 14 1 21 C1 27.6 6.9 31 14 31 C21.1 31 27 27.6 27 21 C27 14 14 0 14 0Z"
         fill="url(#dropGrad)"
       />
-      {/* Shine highlight */}
+     
       <ellipse cx="10" cy="24" rx="3" ry="4" fill="rgba(255,255,255,0.18)" />
-      {/* Eye / gaze pupil */}
+      
       <circle cx="14" cy="20" r="4" fill="rgba(0,0,0,0.35)" />
       <circle cx="15.5" cy="18.5" r="1.4" fill="rgba(255,255,255,0.55)" />
       <defs>
@@ -30,7 +30,7 @@ const FuelGazeLogo = () => (
       </defs>
     </svg>
 
-    {/* Wordmark */}
+   
     <div style={{ display: "flex", alignItems: "baseline", gap: 1 }}>
       <span style={{
         fontSize: 18,
@@ -58,7 +58,7 @@ const FuelGazeLogo = () => (
   </div>
 );
 
-/* ─── Navbar ─────────────────────────────────────────────────── */
+
 const Navbar = () => (
   <nav style={{
     width: "100%",
@@ -83,10 +83,10 @@ const Navbar = () => (
       justifyContent: "space-between",
       boxShadow: "0 8px 32px rgba(0,0,0,0.45)",
     }}>
-      {/* Logo */}
+     
       <FuelGazeLogo />
 
-      {/* Live pill */}
+     
       <div style={{
         display: "flex",
         alignItems: "center",
@@ -128,7 +128,7 @@ const Navbar = () => (
   </nav>
 );
 
-/* ─── App ────────────────────────────────────────────────────── */
+
 function App() {
   const [loading, setLoading] = useState(true);
 
