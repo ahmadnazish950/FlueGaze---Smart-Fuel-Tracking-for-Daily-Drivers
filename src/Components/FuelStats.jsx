@@ -112,7 +112,7 @@ const FuelStats = () => {
   const handleCalculate = () => {
     setError(""); setResults(null);
     const todayKmVal = parseFloat(todayKm);
-    const odometerVal = odometerKm !== "" ? parseFloat(odometerKm) : null; // zero is valid
+    const odometerVal = odometerKm !== "" ? parseFloat(odometerKm) : null; 
     const litresVal = parseFloat(litres);
     const mileageVal = parseFloat(mileage);
 
@@ -121,7 +121,7 @@ const FuelStats = () => {
 
     const fuelUsedToday = todayKmVal / mileageVal;
     const remaining = litresVal - fuelUsedToday;
-    // zero is a valid odometer reading (new vehicle or reset meter)
+    
     const odometerNote = odometerVal !== null ? `Odometer reading: ${odometerVal.toLocaleString()} km` : null;
 
     if (remaining <= 0) {
@@ -138,9 +138,9 @@ const FuelStats = () => {
     const isWarning = remaining <= 2 || estimatedDays <= 1;
     setWarning(isWarning);
 
-    // Daily fuel advisor — how much fuel needed per day at current pace
-    const dailyFuelNeeded = todayKmVal / mileageVal;          // L used per day
-    const refillLitres = Math.ceil(dailyFuelNeeded * 3);   // suggested top-up for 3 days buffer
+  
+    const dailyFuelNeeded = todayKmVal / mileageVal;         
+    const refillLitres = Math.ceil(dailyFuelNeeded * 3);   
 
     const res = { fuelUsedToday: fuelUsedToday.toFixed(2), fuelRemaining: remaining.toFixed(2), kmRemaining: kmRemaining.toFixed(1), estimatedDays: estimatedDays.toFixed(1), refillDate: refillDateStr, fuelEfficiency: mileageVal, odometerNote, dailyFuelNeeded: dailyFuelNeeded.toFixed(2), refillLitres, invalid: false };
     setResults(res);
@@ -159,7 +159,7 @@ const FuelStats = () => {
 
       <div style={{ maxWidth: 1100, margin: "0 auto", minHeight: "100vh", display: "grid", gridTemplateColumns: isStack ? "1fr" : "1fr 1fr", gap: isStack ? 0 : 48, padding: isStack ? "80px 20px 48px" : "100px 40px 60px", alignItems: "start", boxSizing: "border-box" }}>
 
-        {/* LEFT */}
+        
         <div style={{ display: "flex", flexDirection: "column", paddingBottom: isStack ? 28 : 0 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: T.orangeDim, border: `1px solid ${T.orange}30`, borderRadius: 20, padding: "5px 14px", marginBottom: 22, width: "fit-content" }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: T.orange, boxShadow: `0 0 6px ${T.orange}` }} />
@@ -208,7 +208,7 @@ const FuelStats = () => {
           )}
         </div>
 
-        {/* RIGHT — FORM */}
+        
         <div style={{ background: T.surface, border: `1.5px solid ${T.border}`, borderRadius: 20, padding: isMobile ? "22px 18px" : "30px 28px", display: "flex", flexDirection: "column", gap: 18 }}>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
