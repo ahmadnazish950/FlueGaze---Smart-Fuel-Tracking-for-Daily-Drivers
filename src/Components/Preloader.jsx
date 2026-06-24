@@ -6,7 +6,7 @@ const Preloader = ({ onComplete }) => {
     const [particles, setParticles] = useState([]);
 
     useEffect(() => {
-        // Generate floating particles once on mount
+        
         const pts = Array.from({ length: 18 }, (_, i) => ({
             id: i,
             x: Math.random() * 100,
@@ -18,7 +18,7 @@ const Preloader = ({ onComplete }) => {
     }, []);
 
     useEffect(() => {
-        // Progress animation
+        
         let current = 0;
         const interval = setInterval(() => {
             current += Math.random() * 2.5 + 0.5;
@@ -58,14 +58,13 @@ const Preloader = ({ onComplete }) => {
 
     return (
         <div style={styles.root(phase)}>
-            {/* Ambient background glow */}
+           
             <div style={styles.ambientGlow} />
 
-            {/* Scanlines overlay */}
             <div style={styles.scanlines} />
 
-            {/* Floating particles */}
             {particles.map((p) => (
+            
                 <div
                     key={p.id}
                     style={{
@@ -82,22 +81,22 @@ const Preloader = ({ onComplete }) => {
                 />
             ))}
 
-            {/* Corner brackets */}
+           
             {cornerPositions.map((pos, i) => (
                 <div key={i} style={styles.cornerBracket(pos)} />
             ))}
 
-            {/* Top label */}
+           
             <div style={styles.topLabel}>
                 <div style={styles.dot(0)} />
                 <span style={styles.topLabelText}>FUEL TRACKER SYSTEM</span>
                 <div style={styles.dot(0.6)} />
             </div>
 
-            {/* Main content */}
+           
             <div style={styles.mainContent}>
 
-                {/* SVG Circular gauge */}
+                
                 <div style={{ position: "relative", width: 200, height: 200 }}>
                     <svg width="200" height="200" style={{ transform: "rotate(-90deg)" }}>
                         <defs>
@@ -108,16 +107,16 @@ const Preloader = ({ onComplete }) => {
                             </linearGradient>
                         </defs>
 
-                        {/* Outer ring */}
+                       
                         <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
 
-                        {/* Track */}
+                        
                         <circle cx="100" cy="100" r={RADIUS} fill="none"
                             stroke="rgba(255,140,0,0.08)" strokeWidth="14"
                             strokeDasharray={circumference}
                         />
 
-                        {/* Glow ring */}
+                       
                         <circle cx="100" cy="100" r={RADIUS} fill="none"
                             stroke="rgba(255,140,0,0.15)" strokeWidth="20"
                             strokeDasharray={circumference} strokeDashoffset={strokeDash}
@@ -125,7 +124,7 @@ const Preloader = ({ onComplete }) => {
                             style={{ filter: "blur(6px)", transition: "stroke-dashoffset 0.08s linear" }}
                         />
 
-                        {/* Main progress arc */}
+                       
                         <circle cx="100" cy="100" r={RADIUS} fill="none"
                             stroke="url(#fuelGrad)" strokeWidth="10"
                             strokeDasharray={circumference} strokeDashoffset={strokeDash}
@@ -133,7 +132,7 @@ const Preloader = ({ onComplete }) => {
                             style={{ transition: "stroke-dashoffset 0.08s linear" }}
                         />
 
-                        {/* Tick marks */}
+                        
                         {Array.from({ length: 36 }).map((_, i) => {
                             const angle = (i / 36) * 360;
                             const rad = (angle * Math.PI) / 180;
@@ -151,7 +150,7 @@ const Preloader = ({ onComplete }) => {
                         })}
                     </svg>
 
-                    {/* Center content */}
+                   
                     <div style={styles.gaugeCenter}>
                         <FuelDropIcon progress={progress} />
                         <div style={styles.progressNumber}>{Math.floor(progress)}</div>
@@ -159,7 +158,7 @@ const Preloader = ({ onComplete }) => {
                     </div>
                 </div>
 
-                {/* Fuel bar gauge (E → F) */}
+                
                 <div style={styles.fuelBarSection}>
                     <div style={styles.fuelBarRow}>
                         <span style={styles.fuelLabel}>E</span>
@@ -171,11 +170,11 @@ const Preloader = ({ onComplete }) => {
                         <span style={styles.fuelLabel}>F</span>
                     </div>
 
-                    {/* Status text */}
+                    
                     <div style={styles.statusText(phase)}>{getStatusText()}</div>
                 </div>
 
-                {/* System status rows */}
+                
                 <div style={styles.statusRows}>
                     {systemItems.map((item, i) => (
                         <div key={i} style={styles.statusRow(item.active)}>
@@ -189,7 +188,7 @@ const Preloader = ({ onComplete }) => {
                 </div>
             </div>
 
-            {/* Bottom bar */}
+           
             <div style={styles.bottomBar}>
                 <div style={styles.progressTrack}>
                     <div style={styles.progressFill(progress)} />
@@ -211,7 +210,7 @@ const Preloader = ({ onComplete }) => {
     );
 };
 
-/* ─── Sub-component ─────────────────────────────────────────── */
+/* ─── Sub-component ── */
 const FuelDropIcon = ({ progress }) => (
     <svg width="22" height="26" viewBox="0 0 22 26" style={{ marginBottom: 4 }}>
         <path
@@ -224,7 +223,7 @@ const FuelDropIcon = ({ progress }) => (
     </svg>
 );
 
-/* ─── Static data ────────────────────────────────────────────── */
+/* ─── Static data ─── */
 const cornerPositions = [
     { top: 24, left: 24, rotate: "0deg" },
     { top: 24, right: 24, rotate: "90deg" },
@@ -232,7 +231,7 @@ const cornerPositions = [
     { bottom: 24, left: 24, rotate: "270deg" },
 ];
 
-/* ─── Styles ─────────────────────────────────────────────────── */
+/* ─── Styles ─── */
 const styles = {
     root: (phase) => ({
         position: "fixed",
